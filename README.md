@@ -5,9 +5,9 @@
 Egyszerű nCore Spo0ky Dayz demo HTML + Javascript alapokon.
 
 Automatikusan megjelenő / eltűnő Spo0kyk (134 db), amikre rá lehet kattintani.
-Az alkalmazás a böngésző helyi tárolójába menti a megjelenő / elkapott Spo0kykat.
+Az alkalmazás a böngésző helyi tárolójába menti a megjelenített / elkapott Spo0kykat.
 
-Konzolból is használható függvények:
+<b>Konzolból is használható függvények</b>
 
 <b>Spo0kyk indítása</b><br>
 spookyInit();<br>
