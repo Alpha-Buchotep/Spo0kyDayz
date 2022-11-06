@@ -7,14 +7,14 @@ Az alkalmazás a böngésző helyi tárolójába menti a megjelenő / elkapott S
 
 Konzolból is használható függvények:
 
-Spo0kyk indítása 
-spookyInit();
+<b>Spo0kyk indítása</b><br>
+spookyInit();<br>
 
-Spo0kyk leállítása 
-spookyStop();
+<b>Spo0kyk leállítása</b><br>
+spookyStop();<br>
 
-Eredmények listázása 
-eredmenyek();
+<b>Eredmények listázása</b><br>
+eredmenyek();<br>
 
-Eredmények törlése 
-eredmenyekTorlese();
+<b>Eredmények törlése</b><br>
+eredmenyekTorlese();<br>
