@@ -1,4 +1,4 @@
-# Spo0kyDayz - Demo #
+# Spo0ky Dayz - Demo #
 
 Egyszerű nCore Spo0ky Dayz demo HTML + Javascript alapokon.
 
