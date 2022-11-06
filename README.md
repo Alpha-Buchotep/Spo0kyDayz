@@ -9,7 +9,7 @@ Az alkalmazás a böngésző helyi tárolójába menti a megjelenített / elkapo
 
 Egy spo0kyk megjelenítését követően 30 másodpercünk van arra, hogy elkapjuk.
 
-#<b>Konzolból is használható függvények</b>#
+# <b>Konzolból is használható függvények</b>
 
 <b>Spo0kyk indítása</b><br>
 spookyInit();<br>
