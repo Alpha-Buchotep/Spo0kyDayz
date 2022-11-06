@@ -23,7 +23,7 @@ eredmenyekTorlese();<br>
 
 # <b>Különbségek az eredeti játékhoz képest</b><br> #
 
-1. Az eredeti játék WebSocket-t használ, amihez pl. NodeJS kell.
-2. A megjelenő Spookyk lehetnek pozitív vagy negatív tulajdonságúak, ennek megfeleően oszt ki jutalmat vagy büntetést.
-3. A jutalmak / büntetések párosítva vannak a jó / rossz tulajdonságú szörnyekkel.
-4. A megjelenített szörnyek napszaknak megfelelően vannak időzítve, nem kliens oldalon dől el, mikor / mennyi / milyen Spooky jelenik meg.
+1. Az eredeti játék WebSocket-t használ, amihez pl. NodeJS kell.<br>
+2. A megjelenő Spookyk lehetnek pozitív vagy negatív tulajdonságúak, ennek megfeleően oszt ki jutalmat vagy büntetést az alkalmazás.<br>
+3. A jutalmak / büntetések párosítva vannak a jó / rossz tulajdonságú szörnyekkel.<br>
+4. A megjelenített szörnyek napszaknak megfelelően vannak időzítve, nem kliens oldalon dől el, mikor / mennyi / milyen Spooky jelenik meg.<br>
