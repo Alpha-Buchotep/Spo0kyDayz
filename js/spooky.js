@@ -209,10 +209,10 @@ function addDiv() {
 	let spookyDiv = document.createElement("div");
 	let ablakSzelesseg = window.innerWidth;
 	let ablakMagassag = window.innerHeight;
-    let minPngNum = Math.ceil(1);
-    let maxPngNum = Math.floor(135);
+	let minPngNum = Math.ceil(1);
+	let maxPngNum = Math.floor(135);
    
-   // Megjelenő Spo0ky pixelben megadott minimális pozíciója (x és y)
+	// Megjelenő Spo0ky pixelben megadott minimális pozíciója (x és y)
 	let minPos = Math.ceil(10);
 
 	// Megjelenő Spo0ky pixelben megadott maximális X pozíciója
@@ -221,16 +221,16 @@ function addDiv() {
 	// Megjelenő Spo0ky pixelben megadott maximális Y pozíciója
 	let maxPosY = ablakMagassag-210;
 
-    let spookyPngNum = Math.floor(Math.random() * (maxPngNum - minPngNum) + minPngNum);
+	let spookyPngNum = Math.floor(Math.random() * (maxPngNum - minPngNum) + minPngNum);
 	let posX = Math.floor(Math.random() * (maxPosX - minPos) + minPos);
 	let posY = Math.floor(Math.random() * (maxPosY - minPos) + minPos);
 	let spookyPng = "Spo0ky_" + spookyPngNum + ".png";
 
-    // Spo0ky szöveg véletleszerű kiválasztása a tömb elmeinek számából
+	// Spo0ky szöveg véletleszerű kiválasztása a tömb elmeinek számából
 	// A demoban ez 0-99 érék lehet, mivel 100 db Spo0ky szöveg van beállítva a tömbben
 	let minNum = 0;
 	let maxNum = spookySzovegek.length-1;
-    let spkySzovegNum = veletlenSzamGen(minNum, maxNum);
+	let spkySzovegNum = veletlenSzamGen(minNum, maxNum);
 	let spkySzoveg = spookySzovegek[spkySzovegNum];
 
 	spookyDiv.setAttribute("id", "spo0kyD");
