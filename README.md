@@ -19,7 +19,9 @@ spookyStop();<br>
 eredmenyek();<br>
 
 <b>Eredmények törlése</b><br>
-eredmenyekTorlese();<br>
+eredmenyekTorlese();<br><br>
+
+Az alkalmazás a konzolban naplózza a működését.
 
 # <b>Különbségek az eredeti játékhoz képest</b><br> #
 
