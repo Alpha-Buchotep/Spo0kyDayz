@@ -25,7 +25,7 @@ eredmenyekTorlese();<br><br>
 
 Az alkalmazás a konzolban naplózza a működését.
 
-# <b>Különbségek az eredeti játékhoz képest</b><br> #
+# <b>Különbségek az eredeti játékhoz képest</b><br>
 
 1. Az eredeti játék WebSocket-t használ, amihez pl. NodeJS kell.<br><br>
 2. A megjelenő Spookyk lehetnek pozitív vagy negatív tulajdonságúak, ennek megfeleően oszt ki jutalmat vagy büntetést az alkalmazás.<br><br>
