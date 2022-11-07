@@ -32,4 +32,4 @@ Az alkalmazás a konzolban naplózza a működését.
 3. A jutalmak / büntetések párosítva vannak a jó / rossz tulajdonságú szörnyekkel.<br><br>
 4. A megjelenített szörnyek napszaknak megfelelően vannak időzítve, nem kliens oldalon dől el, mikor / mennyi / milyen Spooky jelenik meg.<br><br>
 
-![image](https://user-images.githubusercontent.com/63890454/200418352-7e66c8ac-ad78-47ad-9bd0-40528d9ab389.png)
+![image](https://i.imgur.com/z8164vh.gif)
