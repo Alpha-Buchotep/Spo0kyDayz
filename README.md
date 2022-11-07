@@ -7,7 +7,7 @@ Egyszerű nCore Spo0ky Dayz demo HTML + Javascript alapokon.
 Automatikusan megjelenő Spo0kyk (134 db), amikre rá lehet kattintani.
 Az alkalmazás a böngésző helyi tárolójába menti a megjelenített / elkapott Spo0kykat.
 
-Egy spo0kyk megjelenítését követően 30 másodpercünk van arra, hogy elkapjuk.
+Egy spo0ky megjelenítését követően 30 másodpercünk van arra, hogy elkapjuk.
 
 # <b>Konzolból is használható függvények</b>
 
