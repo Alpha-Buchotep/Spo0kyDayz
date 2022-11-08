@@ -206,14 +206,19 @@ function autoSpooky() {
 
 function addDiv() {
 
+	// DIV létrehozása a megjelenő Spookynak
 	let spookyDiv = document.createElement("div");
+	
+	// Ablak méreteinek beszippantása
 	let ablakSzelesseg = window.innerWidth;
 	let ablakMagassag = window.innerHeight;
-	let minPngNum = Math.ceil(1);
-	let maxPngNum = Math.floor(135);
+	
+	// A Spooky PNG fájlok kezdő / vége sorszáma (img/Spo0ky mappa)
+	let minPngNum = 1;
+    let maxPngNum = 134;
    
-	// Megjelenő Spo0ky pixelben megadott minimális pozíciója (x és y)
-	let minPos = Math.ceil(10);
+   // Megjelenő Spo0ky pixelben megadott minimális pozíciója (x és y)
+	let minPos = 10;
 
 	// Megjelenő Spo0ky pixelben megadott maximális X pozíciója
 	let maxPosX = ablakSzelesseg-210;
@@ -221,24 +226,33 @@ function addDiv() {
 	// Megjelenő Spo0ky pixelben megadott maximális Y pozíciója
 	let maxPosY = ablakMagassag-210;
 
-	let spookyPngNum = Math.floor(Math.random() * (maxPngNum - minPngNum) + minPngNum);
-	let posX = Math.floor(Math.random() * (maxPosX - minPos) + minPos);
-	let posY = Math.floor(Math.random() * (maxPosY - minPos) + minPos);
+	// Megjelenő Spo0ky PNG száma (1-134)
+	let spookyPngNum = veletlenSzamGen(minPngNum, maxPngNum);
+
+	//Spooky X pozíció
+	let posX = veletlenSzamGen(minPos, maxPosX);
+
+	//Spooky Y pozíció
+	let posY = veletlenSzamGen(minPos, maxPosY);
+	
+	// Megjelenő Spo0ky PNG fájl
 	let spookyPng = "Spo0ky_" + spookyPngNum + ".png";
 
-	// Spo0ky szöveg véletleszerű kiválasztása a tömb elmeinek számából
-	// A demoban ez 0-99 érék lehet, mivel 100 db Spo0ky szöveg van beállítva a tömbben
+    // Spo0ky szöveglnek véletleszerű kiválasztása a tömb elmeinek számából
+	// A demoban ez 0-99 érték lehet, mivel 100 db Spo0ky szöveg van beállítva a tömbben
 	let minNum = 0;
 	let maxNum = spookySzovegek.length-1;
-	let spkySzovegNum = veletlenSzamGen(minNum, maxNum);
+    let spkySzovegNum = veletlenSzamGen(minNum, maxNum);
 	let spkySzoveg = spookySzovegek[spkySzovegNum];
 
+	// Létrehozott DIV beállítása (id, css, tartalom, klikk figyelés)
 	spookyDiv.setAttribute("id", "spo0kyD");
 	spookyDiv.style.cssText = "position: fixed; left:" + posX + "px; top:" + posY + "px; width: 180px; height: 180px; opacity: 1; text-align: center; cursor: pointer; z-index: 1000; background: #00000;";
 	spookyDiv.innerHTML = "<div id='spookyTxt' style='width: 180px; height: auto; display: none; background-color: rgba(15, 15, 15, 0.86); border: 1px solid #9066FF;'><p style='padding: 3px; font-size: 11px; color: #ffffff; line-height: 18px; text-align: left;'>"+spkySzoveg+"</p><div>";
 	spookyDiv.innerHTML += "<img id='spookyKep' src='img/Spo0ky/"+spookyPng+"' width='180px'>";
 	spookyDiv.addEventListener("click", spookyClicked);
 	
+	// Megjelenítjük a Spookyt
 	document.body.append(spookyDiv);
 
 }
