@@ -143,6 +143,7 @@ var spookySzovegek = [
 
 function spookyInit(){
 	
+	spookyStop();
 	let spookyMinIdo = defSpookyMinIdo*1000;
 	let spookyMaxIdo = defSpookyMaxIdo*1000;
 	let veletlenNum = veletlenSzamGen(spookyMinIdo, spookyMaxIdo);
