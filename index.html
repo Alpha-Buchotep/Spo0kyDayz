@@ -1,0 +1,36 @@
+<!DOCTYPE HTML>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="Spo0ky Dayz Trainer by Jonastos (nCore)">
+<meta name="Author" content="Jonastos (nCore)">
+<title>Spo0ky Dayz Trainer</title>
+<link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+<script>
+let bgKepek = ['spookyBg1.jpg', 'spookyBg2.jpg', 'spookyBg3.jpg', 'spookyBg4.jpg', 'spookyBg5.jpg', 'spookyBg6.jpg'];
+let randomKep = Math.ceil( Math.random() * bgKepek.length);
+document.body.style.backgroundImage = "url('img/bgs/spookyBg" + randomKep + ".jpg')";
+</script>
+
+<style type="text/css">
+body {
+	background: #151515;
+	/*background-image: url('img/bgs/spookyBg1.jpg');*/
+	background-size: cover;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	font-family: Verdana;
+}
+</style>
+<div class="text" style="text-align: center; margin-bottom: 25px;">
+	<h2 style="color: #f81806">SpOoKy Dayz Trainer</h2>
+	<span style="color: #EAEAEA; padding: 6px; border: 1px solid #ff0000;">Kapd el a megjelenő szörnyeket!</span>
+</div>
+<!-- Spo0ky script -->
+<script type="text/javascript" src="js/spooky.js"></script>
+</body>
+</html>
