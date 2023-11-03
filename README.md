@@ -1,8 +1,8 @@
-# Spo0ky Dayz - Demo #
+# Spo0ky Dayz Trainer #
 
 ![image](https://user-images.githubusercontent.com/63890454/200156459-b0b64493-7c41-45c4-950a-7e63eabc91d0.png)
 
-Egyszerű Spo0ky Dayz demo HTML + Javascript alapokon.
+Egyszerű Spo0ky Dayz Trainer HTML + Javascript alapokon.
 
 Automatikusan megjelenő Spo0kyk (179 db), amikre rá lehet kattintani.
 239 db különböző szöveg a figurákra történő kattintáskor.
