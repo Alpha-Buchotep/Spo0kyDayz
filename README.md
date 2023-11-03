@@ -4,7 +4,9 @@
 
 Egyszerű Spo0ky Dayz demo HTML + Javascript alapokon.
 
-Automatikusan megjelenő Spo0kyk (134 db), amikre rá lehet kattintani.
+Automatikusan megjelenő Spo0kyk (179 db), amikre rá lehet kattintani.
+239 db különböző szöveg a figurákra történő kattintáskor.
+
 Az alkalmazás a böngésző helyi tárolójába menti a megjelenített / elkapott Spo0kykat.
 
 Egy spo0ky megjelenítését követően 30 másodpercünk van arra, hogy elkapjuk.
@@ -25,7 +27,7 @@ eredmenyekTorlese();<br><br>
 
 Az alkalmazás a konzolban naplózza a működését.
 
-# <b>Különbségek az eredeti játékhoz képest</b><br>
+# <b>Különbségek az nCore oldalon futó és az innen letölthető játék között</b><br>
 
 1. Az eredeti játék WebSocket-t használ, amihez pl. NodeJS kell.<br><br>
 2. A megjelenő Spookyk lehetnek pozitív vagy negatív tulajdonságúak, ennek megfeleően oszt ki jutalmat vagy büntetést az alkalmazás.<br><br>
