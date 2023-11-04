@@ -4,9 +4,9 @@
 
 Egyszerű Spo0ky Dayz Trainer HTML + Javascript alapokon.
 
-Automatikusan megjelenő Spo0kyk (179 db), amikre rá lehet kattintani.
-239 db különböző szöveg a figurákra történő kattintáskor.
-6 különböző háttér
+* Automatikusan megjelenő, kattintható Spo0kyk (179 db)
+* 239 különböző szöveg a figurákra történő kattintáskor
+* 6 háttérkép
 
 Az alkalmazás a böngésző helyi tárolójába menti a megjelenített / elkapott Spo0kykat.
 
