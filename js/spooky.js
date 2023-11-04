@@ -398,7 +398,7 @@ function addDiv() {
 	spookyDiv.setAttribute("id", "spo0kyD");
 	spookyDiv.style.cssText = "position: fixed; left:" + posX + "px; top:" + posY + "px; width: 180px; height: 180px; opacity: 1; text-align: center; cursor: pointer; z-index: 9999; background: #00000;";
 	spookyDiv.innerHTML = "<div id='spookyTxt' style='width: 180px; height: auto; display: none; background-color: rgba(15, 15, 15, 0.86); border: 1px solid #9066FF;'><p style='padding: 3px; font-size: 11px; color: #ffffff; line-height: 18px; text-align: left;'>"+spkySzoveg+"</p><div>";
-	spookyDiv.innerHTML += "<img id='spookyKep' src='img/Spo0ky/"+spookyPng+"' width='180px'>";
+	spookyDiv.innerHTML += "<img id='spookyKep' src='img/Spo0ky/"+spookyPng+"' width='120px'>";
 	spookyDiv.addEventListener("click", spookyClicked);
 	
 	// Megjelenítjük a Spookyt
