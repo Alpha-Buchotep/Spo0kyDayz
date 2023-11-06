@@ -6,11 +6,25 @@ Egyszerű Spo0ky Dayz Trainer HTML + Javascript alapokon.
 
 * Automatikusan megjelenő, kattintható Spo0kyk (179 db)
 * 239 különböző szöveg a figurákra történő kattintáskor
-* 6 háttérkép
+* 7 db nCore téma háttérkép
+* 6 db Halloween téma háttérkép
+
+![SpOoKy-Trainer](https://github.com/Alpha-Buchotep/Spooky-Dayz/assets/63890454/192a5f88-6f90-488b-a9f2-3e0e23c48f4b)
 
 Az alkalmazás a böngésző helyi tárolójába menti a megjelenített / elkapott Spo0kykat.
 
 Egy spo0ky megjelenítését követően 30 másodpercünk van arra, hogy elkapjuk.
+
+# <b>Háttérképek kiválasztása</b>
+Nyissuk meg Notepad++ vagy hasonló text editorral az index.html fájlt, majd módosítsuk az alábbi változó értékét:
+
+<b>nCore témák</b>
+
+<code>var hatterKep = "nc";</code>
+
+<b>Halloween témák</b>
+
+<code>var hatterKep = "kp";</code>
 
 # <b>Konzolból is használható függvények</b>
 
