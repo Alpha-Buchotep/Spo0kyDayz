@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html lang="hu">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="keywords" content="Spo0ky Dayz Trainer by Jonastos (nCore)">
+<meta name="Author" content="Jonastos (nCore)">
+<title>Spo0ky Dayz Trainer</title>
+<link rel="shortcut icon" href="favicon.ico">
+</head>
+<body>
+<script>
+
+//---------------------------------------------
+// Milyen háttérképek között váltogassunk?
+//---------------------------------------------
+// nc = nCore témák
+// kp = egyéb háttérképek
+//---------------------------------------------
+
+var hatterKep = "nc";
+
+//---------------------------------------------
+
+if (hatterKep == "nc") {
+
+	let bgKepek = ['spkyBg-1.jpg', 'spkyBg-2.jpg', 'spkyBg-3.jpg', 'spkyBg-4.jpg', 'spkyBg-5.jpg', 'spkyBg-6.jpg', 'spkyBg-7.jpg'];
+	let randomKep = Math.ceil( Math.random() * bgKepek.length);
+	document.body.style.cssText = "background: #090909; background-size: contain; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; font-family: Verdana;";
+	document.body.style.backgroundImage = "url('img/bgs/nc/spookyBg-" + randomKep + ".jpg')";
+
+} else if (hatterKep == "kp") {
+
+	let bgKepek = ['spookyBg1.jpg', 'spookyBg2.jpg', 'spookyBg3.jpg', 'spookyBg4.jpg', 'spookyBg5.jpg', 'spookyBg6.jpg'];
+	let randomKep = Math.ceil( Math.random() * bgKepek.length);
+	document.body.style.cssText = "background: #090909; background-size: cover; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; font-family: Verdana;";
+	document.body.style.backgroundImage = "url('img/bgs/kp/spookyBg-" + randomKep + ".jpg')";
+
+} else {
+
+	let bgKepek = ['spkyBg-1.jpg', 'spkyBg-2.jpg', 'spkyBg-3.jpg', 'spkyBg-4.jpg', 'spkyBg-5.jpg', 'spkyBg-6.jpg', 'spkyBg-7.jpg'];
+	let randomKep = Math.ceil( Math.random() * bgKepek.length);
+	document.body.style.cssText = "background: #090909; background-size: contain; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; font-family: Verdana;";
+	document.body.style.backgroundImage = "url('img/bgs/nc/spookyBg-" + randomKep + ".jpg')";
+}
+
+</script>
+<!-- Spo0ky script -->
+<script type="text/javascript" src="js/spooky.js"></script>
+</body>
+</html>
