@@ -16,15 +16,7 @@ Az alkalmazás a böngésző helyi tárolójába menti a megjelenített / elkapo
 Egy spo0ky megjelenítését követően 30 másodpercünk van arra, hogy elkapjuk.
 
 # <b>Háttérképek kiválasztása</b>
-Nyissuk meg Notepad++ vagy hasonló text editorral az index.html fájlt, majd módosítsuk az alábbi változó értékét:
-
-<b>nCore témák</b>
-
-<code>var hatterKep = "nc";</code>
-
-<b>Halloween témák</b>
-
-<code>var hatterKep = "kp";</code>
+A használandó háttérképekre az alkalmazás rákérdez az index.html indításkor.
 
 # <b>Konzolból is használható függvények</b>
 
