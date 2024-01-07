@@ -1,8 +1,8 @@
 // ------------------------------------------
 // SpOoKy Dayz Trainer - by Jonastos (nCore)
 // ------------------------------------------
-// Frissítve: 2023-11-06
-// Verzió: 1.0.2.0
+// Frissítve: 2024-01-03
+// Verzió: 1.0.3.0
 // ------------------------------------------
 // 179 db SpOoKy figura
 // 234 db különböző szöveg
@@ -12,6 +12,13 @@
 // -----------------------------
 // Globális változók
 // -----------------------------
+
+var verzio = "1.0.3.0";
+
+// -----------------------------
+// Böngésző helyi tároló
+// -----------------------------
+var helyiTaroloOkay = false;
 
 // -----------------------------
 // Számlálók
@@ -282,42 +289,118 @@ var spookySzovegek = [
 ];
 
 //--------------------------------------------------------------
+// Spooky start
+//--------------------------------------------------------------
 
 function spookyInit(){
 	
 	spookyStop();
+	naplozas("Auto Spo0ky v" + verzio + " elindult", 1, 1);
 
-	let d = new Date();
+	//--------------------------------------------------------------
+	// Megkérdezzük a felhasználót, milyen
+	// háttérképek között váltogassunk
+	//--------------------------------------------------------------
+	// nc = nCore témák
+	// kp = egyéb háttérképek
+	//--------------------------------------------------------------
+
+	var hatterKep = prompt("Milyen háttérképek legyenek az oldalon?\n\nnc = nCore hátterek\n\nkp = egyéb hátterek\n\nNyomd meg az F11 billentyűt a teljes képernyős nézethez.\n\n", "nc");
+
+	//--------------------------------------------------------------
+	// Ellenőrizzük a megadott értéket
+	//--------------------------------------------------------------
+
+	// NC hátérképek
+	if (hatterKep == "nc") {
+
+		let bgKepekSzama = 7;
+		let randomKep = Math.ceil( Math.random() * bgKepekSzama);
+		document.body.style.cssText = "background: #090909; background-size: contain; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; font-family: Verdana;";
+		document.body.style.backgroundImage = "url('img/bgs/nc/spookyBg-" + randomKep + ".jpg')";
+
+	// Egyéb hátérképek
+	} else if (hatterKep == "kp") {
+
+		let bgKepekSzama = 6;
+		let randomKep = Math.ceil( Math.random() * bgKepekSzama);
+		document.body.style.cssText = "background: #090909; background-size: cover; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; font-family: Verdana;";
+		document.body.style.backgroundImage = "url('img/bgs/kp/spookyBg-" + randomKep + ".jpg')";
+
+	// A választás nem nc vagy kp
+	// ezért az nc háttereket használjuk
+	} else {
+
+		let bgKepekSzama = 7;
+		let randomKep = Math.ceil( Math.random() * bgKepekSzama);
+		document.body.style.cssText = "background: #090909; background-size: contain; background-position: center center; background-repeat: no-repeat; background-attachment: fixed; font-family: Verdana;";
+		document.body.style.backgroundImage = "url('img/bgs/nc/spookyBg-" + randomKep + ".jpg')";
+	}
+
+	//--------------------------------------------------------------
+
+	helyiTaroloOkay = false;
+
+	// Ellenőrizzük a böngésző helyi tárolójának használhatóságát
+	try {
+		localStorage.setItem("teszt", "rendben");
+		helyiTaroloOkay = true;
+		naplozas("Sikeres hozzáférés a böngésző helyi tárolójához. A statisztikai adatok naplózva lesznek.", 2, 1);
+	} catch(err) {
+		helyiTaroloOkay = false;
+		naplozas("Nem férek hozzá a böngésző helyi tárolójához! Így nem lesznek statisztikai adatok.", 3, 1);
+	}
+
+	if (helyiTaroloOkay == true) {
+		if (localStorage.getItem("teszt") != undefined) {
+			try {
+				localStorage.removeItem("teszt");
+			} catch(err) {
+				//hiba
+			}
+		}
+	}
+
+	//--------------------------------------------------------------
+
 	let spookyMinIdo = defSpookyMinIdo*1000;
 	let spookyMaxIdo = defSpookyMaxIdo*1000;
 	let veletlenNum = veletlenSzamGen(spookyMinIdo, spookyMaxIdo);
 
-	if (localStorage.getItem("megjelentSpookyk") != undefined) {
-		megjelentSpookyk = parseInt(localStorage.getItem("megjelentSpookyk"));
-	} else {
-		localStorage.setItem("megjelentSpookyk", megjelentSpookyk);
-	}
-
 	//--------------------------------------------------------------
 
-	if (localStorage.getItem("elkapottSpookyk") != undefined) {
-		elkapottSpookyk = parseInt(localStorage.getItem("elkapottSpookyk"));
-	} else {
-		localStorage.setItem("elkapottSpookyk", elkapottSpookyk);
-	}
+	if (helyiTaroloOkay == true) {
+		if (localStorage.getItem("megjelentSpookyk") != undefined) {
+			megjelentSpookyk = parseInt(localStorage.getItem("megjelentSpookyk"));
+		} else {
+			localStorage.setItem("megjelentSpookyk", megjelentSpookyk);
+		}
 
+		//--------------------------------------------------------------
+
+		if (localStorage.getItem("elkapottSpookyk") != undefined) {
+			elkapottSpookyk = parseInt(localStorage.getItem("elkapottSpookyk"));
+		} else {
+			localStorage.setItem("elkapottSpookyk", elkapottSpookyk);
+		}
+
+	}
 	//--------------------------------------------------------------
 
-	console.log(d.toLocaleString() + " - Auto Spo0ky elindult.");
-	console.log(d.toLocaleString() + " - Eddig megjelenített Spo0kyk: " + megjelentSpookyk + " db.");
-	console.log(d.toLocaleString() + " - Eddig elkapott Spo0kyk: " + elkapottSpookyk + " db.");
-	console.log(d.toLocaleString() + " - SpOoKy megjelenik: " + Math.round(veletlenNum/1000) + " mp");
-	console.log("-----------------------------------------------------------------------------------");
+	if (helyiTaroloOkay == true) {
+		naplozas("Eddig megjelenített Spo0kyk: " + megjelentSpookyk + " db.", 0, 1);
+		naplozas("Eddig elkapott Spo0kyk: " + elkapottSpookyk + " db.", 2, 1);
+	}
+
+	naplozas("Spo0ky megjelenik: " + Math.round(veletlenNum/1000) + " mp", 3, 1);
+	naplozas("-----------------------------------------------------------------------------------", 0, 0);
 
 	autoSpookyIdo = setInterval(autoSpooky, veletlenNum);
 
 }
 
+//--------------------------------------------------------------
+// Spooky 
 //--------------------------------------------------------------
 
 function autoSpooky() {
@@ -334,7 +417,6 @@ function autoSpooky() {
 		// nincs időzítő
 	}
 	
-	let d = new Date();
 	let spookyDiv = document.querySelector("#spo0kyD");
 	let spookyLathato = defSpookyLathatoIdo * 1000;
 
@@ -345,15 +427,20 @@ function autoSpooky() {
 	}
 
 	megjelentSpookyk += 1;
-	localStorage.setItem("megjelentSpookyk", megjelentSpookyk);
+	
+	if (helyiTaroloOkay == true) {
+		localStorage.setItem("megjelentSpookyk", megjelentSpookyk);
+	}
 
-	console.log(d.toLocaleString() + " - Spo0ky megjelenítve");
+	naplozas("Spo0ky megjelenítve", 1, 1);
 	
 	addDiv();
 	spkRmvTmr = setTimeout(spookyRemove, spookyLathato, "timeout");	
 
 }
 
+//--------------------------------------------------------------
+// Spooky DIV hozzáadás / formázás
 //--------------------------------------------------------------
 
 function addDiv() {
@@ -395,12 +482,12 @@ function addDiv() {
 	let maxNum = spookySzovegek.length-1;
     let spkySzovegNum = veletlenSzamGen(minNum, maxNum);
 	let spkySzoveg = spookySzovegek[spkySzovegNum];
-
+	
 	// Létrehozott DIV beállítása (id, css, tartalom, klikk figyelés)
 	spookyDiv.setAttribute("id", "spo0kyD");
 	spookyDiv.style.cssText = "position: fixed; left:" + posX + "px; top:" + posY + "px; width: 180px; height: 180px; opacity: 1; text-align: center; cursor: pointer; z-index: 9999; background: #00000;";
 	spookyDiv.innerHTML = "<div id='spookyTxt' style='width: 180px; height: auto; display: none; background-color: rgba(15, 15, 15, 0.86); border: 1px solid #9066FF;'><p style='padding: 3px; font-size: 11px; color: #ffffff; line-height: 18px; text-align: left;'>"+spkySzoveg+"</p><div>";
-	spookyDiv.innerHTML += "<img id='spookyKep' src='img/Spo0ky/"+spookyPng+"' width='150px'>";
+	spookyDiv.innerHTML += "<img id='spookyKep' src='img/Spo0ky/"+spookyPng+"' width='120px'>";
 	spookyDiv.addEventListener("click", spookyClicked);
 	
 	// Megjelenítjük a Spookyt
@@ -409,18 +496,22 @@ function addDiv() {
 }
 
 //--------------------------------------------------------------
+// Spooky klikk
+//--------------------------------------------------------------
 
 function spookyClicked() {
 
-	let d = new Date();
 	let spo0kyDiv = document.getElementById("spo0kyD");
 	let spkyPng = document.getElementById("spookyKep");
 	let spkyTxt = document.getElementById("spookyTxt");
 
 	elkapottSpookyk += 1;
-	localStorage.setItem("elkapottSpookyk", elkapottSpookyk);
 
-	console.log(d.toLocaleString() + " - Spo0ky elkapva");
+	if (helyiTaroloOkay == true) {
+		localStorage.setItem("elkapottSpookyk", elkapottSpookyk);
+	}
+
+	naplozas("Spo0ky elkapva", 2, 1);
 
 	spo0kyDiv.removeEventListener("click", spookyClicked);
 	spkyTxt.addEventListener("click", spookyTxtClicked);
@@ -435,6 +526,8 @@ function spookyClicked() {
 	spkTxtTmr = setTimeout(spookyTxtClicked, 20000);
 }
 
+//--------------------------------------------------------------
+// Spooky klikkelve
 //--------------------------------------------------------------
 
 function spookyTxtClicked () {
@@ -455,10 +548,11 @@ function spookyTxtClicked () {
 }
 
 //--------------------------------------------------------------
+// Spooky eltávolítása az oldalról
+//--------------------------------------------------------------
 
 function spookyRemove(proc) {
 
-	let d = new Date();
 	let spookyDiv = document.querySelector("#spo0kyD");
 	let spookyMinIdo = defSpookyMinIdo*1000;
 	let spookyMaxIdo = defSpookyMaxIdo*1000;
@@ -473,23 +567,25 @@ function spookyRemove(proc) {
 	try {
 		spookyDiv.remove();
 		if(proc == "timeout") {
-			console.log(d.toLocaleString() + " - Spo0ky eltűntetve (nem lett elkapva)");
+			naplozas("Spo0ky eltűntetve (nem lett elkapva)", 3, 1);
 		} else if (proc == "clicked") {
-			console.log(d.toLocaleString() + " - Spo0ky eltűntetve (elkapott!)");
+			naplozas("Spo0ky eltűntetve (elkapott!)", 2, 1);
 		} else {
-			console.log(d.toLocaleString() + " - Spo0ky eltűntetve (???)");
+			naplozas("Spo0ky eltűntetve (???)", 2, 1);
 		}
 	} catch(err) {
-		console.log(d.toLocaleString() + " - Nincs eltűntethető Spo0ky!");
+		naplozas("Nincs eltűntethető Spo0ky!", 3, 1);
 	}
 
 	autoSpookyIdo = setInterval(autoSpooky, veletlenNum);
 
-	console.log(d.toLocaleString() + " - Eddig " + megjelentSpookyk + " db spo0kyt jelent meg összesen, ebből " + elkapottSpookyk + " db lett elkapva.");
-	console.log(d.toLocaleString() + " - SpOoKy megjelenik: " + Math.round(veletlenNum/1000) + " mp");
-	console.log("-----------------------------------------------------------------------------------");
+	naplozas("Eddig " + megjelentSpookyk + " db Spo0kyt jelent meg összesen, ebből " + elkapottSpookyk + " db lett elkapva.", 2, 1);
+	naplozas("Spo0ky megjelenik: " + Math.round(veletlenNum/1000) + " mp", 2, 1);
+	naplozas("-----------------------------------------------------------------------------------");
 }
 
+//--------------------------------------------------------------
+// Véletlenszám generáló
 //--------------------------------------------------------------
 
 function veletlenSzamGen(minNum, maxNum) {
@@ -502,11 +598,12 @@ function veletlenSzamGen(minNum, maxNum) {
 }
 
 //--------------------------------------------------------------
+// Spooky megállítás
+//--------------------------------------------------------------
 
 function spookyStop() {
 
 	let spookyDiv = document.querySelector("#spo0kyD");
-	let d = new Date();
 
 	try {
 		clearInterval(autoSpookyIdo);
@@ -526,57 +623,147 @@ function spookyStop() {
 		// Nincs Spo0ky az oldalon
 	}
 
-	console.log("-----------------------------------------------------------------------------------");
-	console.log(d.toLocaleString() + " - AutoSpo0ky leállítva!");
-	console.log("-----------------------------------------------------------------------------------");
+	naplozas("-----------------------------------------------------------------------------------", 0, 0);
+	naplozas("AutoSpo0ky leállítva!", 1, 1);
+	naplozas("-----------------------------------------------------------------------------------", 0, 0);
 
 }
 
 //--------------------------------------------------------------
+// Eredmények mutatása
+//--------------------------------------------------------------
 
 function eredmenyek() {
+	
 	let megjelent = 0;
 	let elkapott = 0;
 
-	if (localStorage.getItem("megjelentSpookyk") != undefined) {
-		megjelent = parseInt(localStorage.getItem("megjelentSpookyk"));
+	if (helyiTaroloOkay == true) {
+		
+		if (localStorage.getItem("megjelentSpookyk") != undefined) {
+			megjelent = parseInt(localStorage.getItem("megjelentSpookyk"));
+		} else {
+			megjelent = -1;
+		}
+
+		if (localStorage.getItem("elkapottSpookyk") != undefined) {
+			elkapott = parseInt(localStorage.getItem("elkapottSpookyk"));
+		} else {
+			elkapott = -1;
+		}
+
+		if (megjelent >=0 && elkapott >=0) {
+			naplozas("Statisztika:\n\nMegjelent Spo0kyk: " + megjelent + " db\nElkapott Spo0kyk: " + elkapott + " db", 2, 0);
+			alert("Statisztika:\n\nMegjelent Spo0kyk: " + megjelent + " db\nElkapott Spo0kyk: " + elkapott + " db");
+		}
+		
 	} else {
-		megjelent = -1;
+
+		naplozas("Mivel nem férek hozzá a böngésző helyi tárolójához, ezért csak az ebben a munkamenetben megjelenített / elkapott Spookykat tudom mutatni.", 3, 1);
+		naplozas("Statisztika:\n\nMegjelent Spo0kyk: " + megjelentSpookyk + " db\nElkapott Spo0kyk: " + elkapottSpookyk + " db", 2, 0);
+		alert("Statisztika:\n\nMegjelent Spo0kyk: " + megjelentSpookyk + " db\nElkapott Spo0kyk: " + elkapottSpookyk + " db");		
+
 	}
 
-	if (localStorage.getItem("elkapottSpookyk") != undefined) {
-		elkapott = parseInt(localStorage.getItem("elkapottSpookyk"));
-	} else {
-		elkapott = -1;
-	}
-
-	if (megjelent >=0 && elkapott >=0) {
-		alert("Statisztika:\n\nMegjelent Spo0kyk: " + megjelent + " db\nElkapott Spo0kyk: " + elkapott + " db");
-	}
 }
 
+//--------------------------------------------------------------
+// Eredmények törlése
 //--------------------------------------------------------------
 
 function eredmenyekTorlese() {
 
-	try {
-		localStorage.removeItem("megjelentSpookyk");
-	} catch(err) {
-		// Hiba / Nincs ilyen változó
-	}
+	if (helyiTaroloOkay == true) {
+		try {
+			localStorage.removeItem("megjelentSpookyk");
+		} catch(err) {
+			// Hiba / Nincs ilyen változó
+		}
 
-	//----------------------------------------------------------
+		//----------------------------------------------------------
 
-	try {
-		localStorage.removeItem("elkapottSpookyk");
-	} catch(err) {
-		// Hiba / Nincs ilyen változó
+		try {
+			localStorage.removeItem("elkapottSpookyk");
+		} catch(err) {
+			// Hiba / Nincs ilyen változó
+		}
 	}
 	
 	location.reload();
 }
 
 //--------------------------------------------------------------
+// Naplózás
+//--------------------------------------------------------------
+
+function naplozas(szoveg, formazas, showDatum) {
+
+	let d = new Date();
+
+	//--------------------------------------------
+
+	if(formazas == 0) {
+
+		let konzolCss = "font-size: 16px;";
+
+		if(showDatum == 1) {
+			console.log("%c" + d.toLocaleString() + "%s", konzolCss, " - " + szoveg);
+		} else {
+			console.log("%c" + szoveg + "%s", konzolCss, "");
+		}
+
+	//--------------------------------------------
+
+	} else if (formazas == 1) {
+
+		let konzolCss = "text-shadow: -1px 1px 0 #00ffab, 1px 1px 0 #c63d2b, 1px -1px 0 #0099cd, -1px -1px 0 #c6c23f; font-size: 16px; color: #fffff;";
+
+		if(showDatum == 1) {
+			console.log("%c" + d.toLocaleString() + "%s", konzolCss, " - " + szoveg);
+		} else {
+			console.log("%c" + szoveg + "%s", konzolCss, "");
+		}
+
+	//--------------------------------------------
+
+	} else if (formazas == 2) {
+
+		let konzolCss = "font-size: 16px; color: #00ff00;";
+
+		if(showDatum == 1) {
+			console.log("%c" + d.toLocaleString() + "%s", konzolCss, " - " + szoveg);
+		} else {
+			console.log("%c" + szoveg + "%s", konzolCss, "");
+		}
+
+	//--------------------------------------------
+
+	} else if (formazas == 3) {
+
+		let konzolCss = "font-size: 16px; color: #ff0000;";
+
+		if(showDatum == 1) {
+			console.log("%c" + d.toLocaleString() + "%s", konzolCss, " - " + szoveg);
+		} else {
+			console.log("%c" + szoveg + "%s", konzolCss, "");
+		}
+
+	//--------------------------------------------
+
+	} else {
+
+		let konzolCss = "font-size: 16px;";
+
+		if(showDatum == 1) {
+			console.log("%c" + d.toLocaleString() + "%s", konzolCss, " - " + szoveg);
+		} else {
+			console.log("%c" + szoveg + "%s", konzolCss, "");
+		}
+	}
+
+}
+
+//-------------------------------------------------------------------
 
 //---------
 // Indítás
